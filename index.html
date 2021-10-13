@@ -2,9 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Title<</title>
+  <title>Create Movie<</title>
 </head>
 <body>
+<h1>Create Movie</h1>
+<div>
+  <form action="" method="post" id="newMovieForm">
+  <label for="inpTitle">Movie Title</label>
+  <input type="text"
+  name="movieTitle"
+  placeholder="Movie Title"
+  id="inpTitle">
 
+  <label for="inpDura">Movie Duration</label>
+  <input type="text"
+         name="movieDuration"
+         placeholder="Movie Duration"
+         id="inpDura">
+
+  <label for="inpAge">Movie Age Restriction</label>
+  <input type="number"
+         name="movieAge"
+         placeholder="Movie Age Restriction"
+         id="inpAge">
+
+  <label for="inpCat">Movie Category</label>
+  <input type="text"
+         name="movieCat"
+         placeholder="Movie Category"
+         id="inpCat">
+    <button type="submit" title="Create" id="submitMovie">Create</button>
+    <script src="js/CreateMovie.js"></script>
+  </form>
+</div>
 </body>
 </html>
