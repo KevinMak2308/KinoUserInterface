@@ -4,10 +4,12 @@ function newMovie() {
 
 
 
-  let category = document.getElementById("inpCat").value
+  var categoryList = document.getElementById("inpCategory");
+  var category = categoryList.options[categoryList.selectedIndex].value;
   let title = document.getElementById("inpTitle").value
   let duration = document.getElementById("inpDuration").value
   let age = document.getElementById("inpAge").value
+  let actors = document.getElementById("inpActors").value
 
 
   let postMovieRequest = {
@@ -20,6 +22,7 @@ function newMovie() {
       "movieTitle": title,
       "movieDuration": duration,
       "movieAgeRestriction": age,
+      "movieActors": actors,
 
     })
 

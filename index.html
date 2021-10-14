@@ -20,19 +20,30 @@
          placeholder="Movie Duration"
          id="inpDuration">
 
-  <label for="inpAge">Movie Age Restriction</label>
-  <input type="number"
-         name="movieAge"
-         placeholder="Movie Age Restriction"
-         id="inpAge">
+    <label for="inpAge">Movie Age Restriction</label>
+    <select name="movieAge" id="inpAge">
+      <option value="1">Tilladt for alle</option>
+      <option value="2">Frarådes børn under 7 år</option>
+      <option value="3">Tilladt for børn fra 11 år</option>
+      <option value="4">Tilladt for børn fra 15 år</option>
+    </select>
 
-  <label for="inpCat">Movie Category</label>
-  <input type="text"
-         name="movieCat"
-         placeholder="Movie Category"
-         id="inpCat">
+    <label for="inpCategory">Movie Genre</label>
+    <select name="category" id="inpCategory">
+      <option value="1">Horror</option>
+      <option value="2">Romance</option>
+      <option value="3">Action</option>
+      <option value="4">Sci-Fi</option>
+    </select>
+
+    <label for="inpActors">Movie Actors</label>
+    <input type="text"
+           name="movieActors"
+           placeholder="Movie Actors"
+           id="inpActors">
+
+
     <button type="button" title="Create" onclick="newMovie()" id="submitMovie">Create</button>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="js/CreateMovie.js"></script>
   </form>
 </div>
