@@ -19,27 +19,15 @@ function appendData(data) {
     let cell2 = row.insertCell(1);
     cell2.innerHTML = movie.movieDuration;
     let cell3 = row.insertCell(2);
-    cell2.innerHTML = movie.moviec;
+    cell3.innerHTML = movie.movieAgeRestriction;
+    let cell4 = row.insertCell(3);
+    cell4.innerHTML = movie.movieCategory;
+    let cell5 = row.insertCell(4);
+    cell5.innerHTML = movie.movieActors;
 
   }
 }
 
-
-/*function addRow(movie) {
-  let rowCount = table.rows.length;
-  let row = table.insertRow(rowCount);
-  row.id = movie.movieTitle;
-
-  let cell1 = row.insertCell(0);
-  cell1.innerHTML = movie.movieTitle;
-
-  let cell2 = row.insertCell(1);
-  let p = document.createElement("p");
-  p.innerHTML = movie.movieTitle;
-  cell2.appendChild(p);
-}
-
- */
 
 appendData(fetchMoviesData())
 
