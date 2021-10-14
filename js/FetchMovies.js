@@ -1,26 +1,25 @@
 
-function showMovies() {
+const url = 'http://localhost:8080/showAllMovies';
 
-
-let GetMoviesRequest = {
-  method: "Get",
-  headers: {
-    "content-type": "application/json"
-  },
-  body: JSON.stringify({
-    "movieCategory": category,
-    "movieTitle": title,
-    "movieDuration": duration,
-    "movieAgeRestriction": age,
-    "movieActors": actors,
-  })
-
-}
-fetch("http://localhost:8080/showAllMovies", GetMoviesRequest)
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch(error => console.log(error));
-
+function fetchMoviesData() {
+  return fetch(url)
+    .then(data => data.json())
+    .then(appendData)
 }
 
-addEventListener("click",showMovies)
+function appendData(data) {
+  var mainContainer = document.getElementById("showAllMovies");
+  for (var i = 0; i < data.length; i++) {
+    var div = document.createElement("div");
+    div.innerHTML = 'MovieName: ' + data[i].movieTitle + ' Movie Duration ' + data[i].movieDuration
+
+
+    mainContainer.appendChild(div);
+  }
+}
+
+
+appendData(fetchMoviesData())
+
+
+
