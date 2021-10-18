@@ -3,13 +3,13 @@ const out = (str) => console.log(str);
 function newMovie() {
 
 
-  let id = document.createElement().value;
 
   var categoryList = document.getElementById("inpCategory");
   var category = categoryList.options[categoryList.selectedIndex].value;
   let title = document.getElementById("inpTitle").value
   let duration = document.getElementById("inpDuration").value
-  let age = document.getElementById("inpAge").value
+  let ageList = document.getElementById("inpAge");
+  let age = ageList.options[ageList.selectedIndex].value;
   let actors = document.getElementById("inpActors").value
 
 
@@ -19,7 +19,6 @@ function newMovie() {
       "content-type": "application/json"
     },
     body: JSON.stringify({
-      "movieID" : id,
       "movieCategory": category,
       "movieTitle": title,
       "movieDuration": duration,

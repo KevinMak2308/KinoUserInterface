@@ -32,37 +32,29 @@ function appendData(data) {
     let durationInput = document.createElement("input");
     durationInput.style.borderStyle = 'none';
     durationInput.type = "text";
-    durationInput.setAttribute("value", movie.movieTitle);
+    durationInput.setAttribute("value", movie.movieDuration);
     cell1.appendChild(durationInput);
 
     //cell2.innerHTML = movie.movieDuration;
 
     let cell3 = row.insertCell(2);
+    let ageRestrictionSelect = document.createElement("select");
+    var values = ["All Allowed", "PG13", "M for Mature", "R for Rated"];
 
-    const ddMovieAgeRestriction = document.createElement("select");
+    for (const val of values) {
 
-    regionMap.forEach(region => {
-      out(region);
+        var movieAgeOptions = document.createElement("option");
+        movieAgeOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
+        movieAgeOptions.value = movieAgeOptions.text;
+        ageRestrictionSelect.appendChild(movieAgeOptions);
 
-      const movieAgeOptions = document.createElement("Age Select");
-      movieAgeOptions.textContent = movie.movieAgeRestriction;
-      el.value = region.regionKode;
+      }
+      cell3.appendChild(ageRestrictionSelect);
 
-      ddRegion.appendChild(el);
-      ddRegion.addEventListener("change", (event) => {
-        const selind = ddRegion.selectedIndex;
-        out(selind);
-        const opt = ddRegion.options[selind];
-        out(opt);
-        kommune.region.regionKode = opt.value;
-      })
-    })
-    cell4.appendChild(ddRegion);
-
-    cell3.innerHTML = movie.movieAgeRestriction;
+    //cell3.innerHTML = movie.movieAgeRestriction;
 
     let cell4 = row.insertCell(3);
-    cell4.innerHTML = movie.movieCategory;
+    cell4.innerHTML = movie.category;
 
     let cell5 = row.insertCell(4);
     cell5.innerHTML = movie.movieActors;
@@ -80,8 +72,10 @@ function appendData(data) {
       movie.movieDuration = durationInput.value;
       durationInput.style.borderStyle = 'solid';
 
+      movie.movieAgeRestriction = ageRestrictionSelect.value;
 
-      //updateMovie(movie);
+
+      updateMovie(movie);
     }
 
     cell6.appendChild(editbutton);
