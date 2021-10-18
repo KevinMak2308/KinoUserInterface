@@ -3,6 +3,7 @@ const out = (str) => console.log(str);
 function newMovie() {
 
 
+  let id = document.createElement().value;
 
   var categoryList = document.getElementById("inpCategory");
   var category = categoryList.options[categoryList.selectedIndex].value;
@@ -18,6 +19,7 @@ function newMovie() {
       "content-type": "application/json"
     },
     body: JSON.stringify({
+      "movieID" : id,
       "movieCategory": category,
       "movieTitle": title,
       "movieDuration": duration,

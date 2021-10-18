@@ -8,6 +8,9 @@
 <h1>Create Movie</h1>
 <div>
   <form action="" method="post" id="newMovieForm">
+
+
+
   <label for="inpTitle">Movie Title</label>
   <input type="text"
   name="movieTitle"
@@ -22,10 +25,10 @@
 
     <label for="inpAge">Movie Age Restriction</label>
     <select name="movieAge" id="inpAge">
-      <option value="1">Tilladt for alle</option>
-      <option value="2">Frarådes børn under 7 år</option>
-      <option value="3">Tilladt for børn fra 11 år</option>
-      <option value="4">Tilladt for børn fra 15 år</option>
+      <option value="1">All Age Allowed</option>
+      <option value="2">PG 13</option>
+      <option value="3">M for Mature</option>
+      <option value="4">R for Restricted </option>
     </select>
 
     <label for="inpCategory">Movie Genre</label>
@@ -43,9 +46,11 @@
            id="inpActors">
 
 
+
+
     <button type="button" title="Create" onclick="newMovie()" id="submitMovie">Create</button>
+    <script src="js/FetchMovies.js"></script>
     <script src="js/CreateMovie.js"></script>
-    <script src="js/createMovieTable.js"></script>
   </form>
 </div>
 </body>
