@@ -33,31 +33,59 @@ function appendData(data) {
     durationInput.style.borderStyle = 'none';
     durationInput.type = "text";
     durationInput.setAttribute("value", movie.movieDuration);
-    cell1.appendChild(durationInput);
+    cell2.appendChild(durationInput);
 
     //cell2.innerHTML = movie.movieDuration;
 
     let cell3 = row.insertCell(2);
     let ageRestrictionSelect = document.createElement("select");
-    var values = ["All Allowed", "PG13", "M for Mature", "R for Rated"];
+    var ageValues = ["All Allowed", "PG13", "M for Mature", "R for Rated"];
 
-    for (const val of values) {
 
-        var movieAgeOptions = document.createElement("option");
+    for (const val of ageValues) {
+
+      var movieAgeOptions = document.createElement("option");
         movieAgeOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
         movieAgeOptions.value = movieAgeOptions.text;
         ageRestrictionSelect.appendChild(movieAgeOptions);
+    }
 
+
+    for(var j = 0; j < ageRestrictionSelect.options.length;  j++) {
+      if(ageRestrictionSelect.options[j].innerHTML === ageRestrictionSelect.value) {
+        ageRestrictionSelect.selectedIndex = j;
+        break;
       }
-      cell3.appendChild(ageRestrictionSelect);
+    }
+
+    cell3.appendChild(ageRestrictionSelect);
+
 
     //cell3.innerHTML = movie.movieAgeRestriction;
 
     let cell4 = row.insertCell(3);
-    cell4.innerHTML = movie.category;
+    let categorySelect = document.createElement("select");
+    let categoryValues = ["HORROR", "ROMANCE", "ACTION", "SCIFI", "COMEDY"];
+
+    for (const val of categoryValues ) {
+      let categoryOptions = document.createElement("option");
+      categoryOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
+      categoryOptions.value = categoryOptions.text;
+      categorySelect.appendChild(categoryOptions);
+    }
+
+    cell4.appendChild(categorySelect);
+
+    //cell4.innerHTML = movie.category;
 
     let cell5 = row.insertCell(4);
-    cell5.innerHTML = movie.movieActors;
+    let actorInput = document.createElement("input");
+    actorInput.style.borderStyle = 'none';
+    actorInput.type = "text";
+    actorInput.setAttribute("value", movie.movieActors);
+    cell5.appendChild(actorInput);
+
+    //cell5.innerHTML = movie.movieActors;
 
     let cell6 = row.insertCell(5);
     const editbutton = document.createElement("input");
@@ -73,6 +101,11 @@ function appendData(data) {
       durationInput.style.borderStyle = 'solid';
 
       movie.movieAgeRestriction = ageRestrictionSelect.value;
+
+      movie.movieCategory = categorySelect.value;
+
+      movie.movieActors = actorInput.value;
+      actorInput.style.borderStyle = 'solid';
 
 
       updateMovie(movie);
