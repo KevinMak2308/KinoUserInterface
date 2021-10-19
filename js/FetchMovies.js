@@ -120,16 +120,19 @@ function appendData(data) {
 
      cell7.appendChild(updatebutton);
 
-    /* let cell8 = row.insertCell(7);
+     let cell8 = row.insertCell(7);
      const deletebutton = document.createElement("input");
      deletebutton.type ="button";
      deletebutton.setAttribute("value", "Delete")
-     cell7 = row.appendChild(deletebutton);
+
 
      deletebutton.onclick = function () {
+       deleteMovie(movie);
+       window.location.reload()
 
-     }*/
+     }
 
+    cell8 = row.appendChild(deletebutton);
 
   }
 
@@ -167,6 +170,39 @@ function appendData(data) {
     }
     return response.json();
 
+}
+
+async function deleteMovie(movie) {
+  try {
+    const response = await restDeleteMovie(movie);
+    out(response);
+
+  } catch(error) {
+    alert(error.message);
+    out(error);
+  }
+}
+
+async function restDeleteMovie(movie) {
+  const url = "http://localhost:8080/delete/" + movie.movieID;
+
+  const fetchOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: ""
+  }
+
+  const response = await fetch(url, fetchOptions);
+  out(response.status)
+  out(response.ok)
+
+  if (!response.ok) {
+    out(response.error())
+  }
+
+  return response;
 }
 
     appendData(fetchMoviesData());
