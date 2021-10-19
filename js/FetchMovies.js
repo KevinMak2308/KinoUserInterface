@@ -39,24 +39,18 @@ function appendData(data) {
 
     let cell3 = row.insertCell(2);
     let ageRestrictionSelect = document.createElement("select");
-    var ageValues = ["All Allowed", "PG13", "M for Mature", "R for Rated"];
-
+    var ageValues = ["All Allowed", "PG13", "M for Mature", "R for Restricted"];
 
     for (const val of ageValues) {
 
       var movieAgeOptions = document.createElement("option");
         movieAgeOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
         movieAgeOptions.value = movieAgeOptions.text;
+
         ageRestrictionSelect.appendChild(movieAgeOptions);
     }
 
-
-    for(var j = 0; j < ageRestrictionSelect.options.length;  j++) {
-      if(ageRestrictionSelect.options[j].innerHTML === ageRestrictionSelect.value) {
-        ageRestrictionSelect.selectedIndex = j;
-        break;
-      }
-    }
+    ageRestrictionSelect.value = movie.movieAgeRestriction;
 
     cell3.appendChild(ageRestrictionSelect);
 
@@ -107,8 +101,9 @@ function appendData(data) {
       movie.movieActors = actorInput.value;
       actorInput.style.borderStyle = 'solid';
 
-
       updateMovie(movie);
+
+
     }
 
     cell6.appendChild(editbutton);
