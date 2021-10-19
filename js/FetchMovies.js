@@ -27,7 +27,6 @@ function appendData(data) {
     //cell1.innerHTML = movie.movieTitle;
 
 
-
     let cell2 = row.insertCell(1);
     let durationInput = document.createElement("input");
     durationInput.style.borderStyle = 'none';
@@ -44,10 +43,10 @@ function appendData(data) {
     for (const val of ageValues) {
 
       var movieAgeOptions = document.createElement("option");
-        movieAgeOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
-        movieAgeOptions.value = movieAgeOptions.text;
+      movieAgeOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
+      movieAgeOptions.value = movieAgeOptions.text;
 
-        ageRestrictionSelect.appendChild(movieAgeOptions);
+      ageRestrictionSelect.appendChild(movieAgeOptions);
     }
 
     ageRestrictionSelect.value = movie.movieAgeRestriction;
@@ -61,12 +60,16 @@ function appendData(data) {
     let categorySelect = document.createElement("select");
     let categoryValues = ["HORROR", "ROMANCE", "ACTION", "SCIFI", "COMEDY"];
 
-    for (const val of categoryValues ) {
+    for (const val of categoryValues) {
+
       let categoryOptions = document.createElement("option");
       categoryOptions.text = val.charAt(0).toUpperCase() + val.slice(1);
       categoryOptions.value = categoryOptions.text;
+
       categorySelect.appendChild(categoryOptions);
     }
+
+    categorySelect.value = movie.movieCategory;
 
     cell4.appendChild(categorySelect);
 
@@ -88,51 +91,49 @@ function appendData(data) {
 
 
     editbutton.onclick = function () {
-      movie.movieTitle = titleInput.value;
+
       titleInput.style.borderStyle = 'solid';
-
-      movie.movieDuration = durationInput.value;
       durationInput.style.borderStyle = 'solid';
-
-      movie.movieAgeRestriction = ageRestrictionSelect.value;
-
-      movie.movieCategory = categorySelect.value;
-
-      movie.movieActors = actorInput.value;
       actorInput.style.borderStyle = 'solid';
-
-      updateMovie(movie);
-
 
     }
 
     cell6.appendChild(editbutton);
 
 
-    }
-
-    /*let cell7 = row.insertCell(6);
-    const updatebutton = document.createElement("input");
-    updatebutton.type ="button";
-    updatebutton.setAttribute("value", "Update")
-    cell7 = row.appendChild(updatebutton);
+    let cell7 = row.insertCell(6);
+     const updatebutton = document.createElement("input");
+     updatebutton.type = "button";
+     updatebutton.setAttribute("value", "Update")
 
     updatebutton.onclick = function () {
 
-    }
+       movie.movieTitle = titleInput.value;
+       movie.movieDuration = durationInput.value;
+       movie.movieAgeRestriction = ageRestrictionSelect.value;
+       movie.movieCategory = categorySelect.value;
+       movie.movieActors = actorInput.value;
 
-    let cell8 = row.insertCell(7);
-    const deletebutton = document.createElement("input");
-    deletebutton.type ="button";
-    deletebutton.setAttribute("value", "Delete")
-    cell7 = row.appendChild(deletebutton);
+       updateMovie(movie);
 
-    deletebutton.onclick = function () {
+     }
 
-    }*/
+     cell7.appendChild(updatebutton);
+
+    /* let cell8 = row.insertCell(7);
+     const deletebutton = document.createElement("input");
+     deletebutton.type ="button";
+     deletebutton.setAttribute("value", "Delete")
+     cell7 = row.appendChild(deletebutton);
+
+     deletebutton.onclick = function () {
+
+     }*/
 
 
   }
+
+}
 
   async function updateMovie(movie) {
     try {
@@ -159,14 +160,14 @@ function appendData(data) {
       body: jsonString
     }
     const response = await fetch(updateURL, fetchOptions);
-    out("Vi har rettet");
     out(response.status);
     out(response.ok);
     if (!response.ok) {
       out("error");
     }
     return response.json();
-  }
+
+}
 
     appendData(fetchMoviesData());
 
