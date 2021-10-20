@@ -205,7 +205,7 @@ async function restDeleteMovie(movie) {
   return response;
 }
 
-    appendData(fetchMoviesData());
+    fetchMoviesData()
 
 
 
